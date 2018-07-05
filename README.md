@@ -2,7 +2,6 @@
 
 1) Generate Hashing password using MD5 Algorithm and Base64 encoding
 2) Add below configuration in standalone*.xml
-
 <security-domain name="other" cache-type="default">
                     <authentication>
                         <login-module code="Database" flag="required">
