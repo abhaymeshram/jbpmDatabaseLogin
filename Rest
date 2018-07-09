@@ -1,0 +1,9 @@
+Rest Api:
+
+1) Claim: 
+http://localhost:8080/kie-server/services/rest/server/containers/Sample_6.0/tasks/37/states/claimed
+2)  Start
+http://localhost:8080/kie-server/services/rest/server/containers/Sample_6.0/tasks/37/states/started
+3) Completed
+http://localhost:8080/kie-server/services/rest/server/containers/Sample_6.0/tasks/37/states/completed
+
