@@ -42,9 +42,7 @@ custom - custom implementation that requires to have additional system property 
    <outbound-socket-binding name="mail-smtp">
             <remote-destination host="smtp.gmail.com" port="465"/>
     </outbound-socket-binding>
-	
-4) Server in debug mode
- <env key="JAVA_OPTS" value="-Xms1024m -Xmx2048m -agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n" />
+
 
 			
 			
