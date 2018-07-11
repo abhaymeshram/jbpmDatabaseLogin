@@ -1,0 +1,50 @@
+1) Database property file
+
+a) Default : kie-server\web-inf\classes\jbpm.user.info.properties
+b) custom file location: Add file in any folder and set system property
+<property name="jbpm.user.info.properties" value="File Location"/>
+########data to be added in jbpm.user.info.properties ############
+# configuration of data based queries for UserInfo implementation used by task assignments and notifications
+# data source JNDI name to be used - defaults to same as KIE server is using
+db.ds.jndi.name=java:jboss/datasources/jbpmDS
+
+# db query for finding name of user by its id
+db.name.query=select user_name from jbpm_new.users where user_id = ?
+
+# db query for finding email of user by its id
+db.email.query=select email from jbpm_new.users where user_id = ?
+
+# db query for finding preferred language of user by its id
+db.lang.query=select 'en-UK' from jbpm_new.users where user_id=?
+
+# db query for users that belong to given group
+db.group.mem.query=select user_id from jbpm_new.roles where user_role = ?
+########data to be added in jbpm.user.info.properties ############
+
+2) Set System property:
+
+<property name="org.jbpm.ht.userinfo" value="db"/>
+
+ldap - backed by ldap - requires configuration via jbpm-user.info.properties file
+
+db - backed by data base - requires configuration via jbpm-user.info.properties file
+
+props - backed by simple property file
+
+custom - custom implementation that requires to have additional system property set (FQCN of the implementation) - org.jbpm.ht.custom.userinfo
+
+3) Email Session
+
+  <mail-session name="jbpm" jndi-name="java:jboss/mail/jbpmMailSession">
+                <smtp-server outbound-socket-binding-ref="mail-smtp" ssl="true" username="" password=""/>
+  </mail-session>
+  
+   <outbound-socket-binding name="mail-smtp">
+            <remote-destination host="smtp.gmail.com" port="465"/>
+    </outbound-socket-binding>
+	
+4) Server in debug mode
+ <env key="JAVA_OPTS" value="-Xms1024m -Xmx2048m -agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n" />
+
+			
+			
